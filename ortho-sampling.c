@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include <unistd.h>
-#include <stdbool.h>
-#include <complex.h>
-
 #include "mt19937.h"
 #include "rand_support.h"
 
@@ -26,10 +23,8 @@
 long xlist[MAJOR][MAJOR] = {{0}};
 long ylist[MAJOR][MAJOR] = {{0}};
 
-
-
 int
-orthogonal_sample()
+main()
 {
     int i;
     int j;
@@ -67,7 +62,6 @@ orthogonal_sample()
             permute(xlist[i], MAJOR);
             permute(ylist[i], MAJOR);
         }
-
         for (i = 0; i < MAJOR; i++)   /* Subsquare column */
         {
             for (j = 0; j < MAJOR; j++)  /* Subsquare row */
@@ -81,26 +75,9 @@ orthogonal_sample()
                 /* For a given subsquare row, every subsquare has its sample in a different 
                    row of cells */
                 y = -2.0 + scale * (ylist[j][i] + (long double) genrand_real2());
-
+		
                 /* Do the desired computation with with x and y at this point in the code */
-                double complex squared = 0;
-                double complex sum = 0;
-                int iterations = 0;
-                int n = 100;
-                for(int i = 0; i<n ;i++) {
-                    squared = pow(sum, 2);
-                    sum = squared + candidate;
-                    iterations += 1;
-                    // Check boundaries
-                    if (sum.real() > 2 || sum.real() < -2 || sum.imag() < -2 || sum.imag() > 2) {
-                        return false;
-                    }
-                    return true
-
-                }
-                mandel.in_mandelbrot = true;
-                return mandel;
-
+		
             }
         }
     }

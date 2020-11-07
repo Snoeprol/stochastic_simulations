@@ -97,7 +97,7 @@ permute(long list[], unsigned long N)
     }
 }
 
-
+/*  testing code
 int
 main()
 {

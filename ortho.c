@@ -6,7 +6,7 @@
 #include "rand_support.h"
 #include <complex.h>
 
-#define MAJOR	   10000
+#define MAJOR	   9999
 #define SAMPLES    (MAJOR * MAJOR)
 
 /* We will have a total of SAMPLES samples, one in each of the MAJOR * MAJOR cells.
@@ -83,12 +83,13 @@ main()
                 double complex candidate = x + y * I;
                 double complex squared = 0;
                 double complex sum = 0;
+                int iterations = 0;
                 int n = 100;
                 for(int i = 0; i<n ;i++) 
 		    {
 		            squared = pow(sum, 2);
 		            sum = squared + candidate;
-			    //printf("The sum: Z1 + Z2 = %.2f %+.2fi %i\n", creal(sum), cimag(sum), i);
+		            iterations += 1;
 		            // Check boundaries
 		            if (creal(sum) > 2 || creal(sum) < -2 || creal(sum) < -2 || creal(sum) > 2) {
 		                break;
@@ -100,7 +101,7 @@ main()
                     }
             }
         }
-	double prob = count / (double) (MAJOR * MAJOR);
+	double prob = count / (MAJOR * MAJOR);
 	printf("%f",prob);
     }
     /* Postprocessing */
