@@ -101,7 +101,7 @@ main()
                     }
             }
         }
-	double prob = count / (MAJOR * MAJOR);
+	double prob = (double) count / (double) (MAJOR * MAJOR);
 	printf("%f",prob);
     }
     /* Postprocessing */
