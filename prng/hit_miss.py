@@ -26,7 +26,7 @@ for i in range(n):
     hits = 0
     count = 0
     stdev= 0
-    while lam > 0.01 or count < 100:
+    while lam > 0.0025 or count < 100:
         if generate_point():
             hits += 1
             x.append(1)
@@ -37,7 +37,7 @@ for i in range(n):
         lam = stdev * 1.96 / np.sqrt(count)
     
     print(hits/count * 4 - np.pi)
-    if abs(hits/count * 4 - np.pi) < 0.04:
+    if abs(hits/count * 4 - np.pi) < 0.01:
        wins += 1 
     print(count)
 print(wins/n)
