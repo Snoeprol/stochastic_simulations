@@ -2,7 +2,7 @@ import numpy as np
 n = 100
 count = 0
 wins = 0
-
+runs = 100
 
 def generate_point():
     x = np.random.rand()
@@ -10,34 +10,29 @@ def generate_point():
     if x**2 + y**2 < 1: return True 
     
     else: return False
-'''
-for i in range(n):
-    x = np.random.rand()
-    y = np.random.rand()
-    if x**2 + y**2 < 1:
-        count += 1
-    print(count / (i + 1)- np.pi/4)
-'''
-# Pi 95% confidence +- 0.01
-for i in range(n):
-    lam = 1
-    pi = 0
-    x = []
+
+def generate_pi(n):
     hits = 0
-    count = 0
-    stdev= 0
-    while lam > 0.0025 or count < 100:
+    for i in range(n):
         if generate_point():
             hits += 1
-            x.append(1)
-        else:
-            x.append(0)
+    return hits/n * 4
+
+# Pi 95% confidence +- 0.01
+for _ in range(runs):
+    lam = 1
+    pis = []
+    stdev= 0
+    count = 0
+    while lam > 0.01:
         count += 1
-        if len(x) % 99 == 0 : stdev = np.std(x)
-        lam = stdev * 1.96 / np.sqrt(count)
-    
-    print(hits/count * 4 - np.pi)
-    if abs(hits/count * 4 - np.pi) < 0.01:
-       wins += 1 
+        pis.append(generate_pi(100))
+        stdev = np.std(pis)
+        if count > 2: lam = stdev * 1.96 / np.sqrt(count)
+    theta = np.mean(pis)
+    print(theta)
+    print(np.pi - theta)
     print(count)
-print(wins/n)
+    if np.pi - theta < 0.01:
+        wins += 1
+print(wins/runs)
