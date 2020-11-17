@@ -40,6 +40,8 @@ def get_variances(data):
     file2write.write(variances)
     file2write.close()
 
+# Array of tuples i, n for which the computational time is 1.5
+# obtained from the polynomial fit function
 data = np.array([[2.00000000e+02, 1.71843369e+04],
        [1.98860560e+02, 1.80000000e+04],
        [1.98000000e+02, 1.86113165e+04],
