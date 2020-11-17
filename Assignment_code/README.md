@@ -6,10 +6,10 @@ This project explores different sampling methods, statistical confidence measure
 
 Example of interesting files to run:
 
-produce_surface_plots.py
-control_variets.py
-readmatrix.py
-T_test_F_test.py
+	produce_surface_plots.py
+	control_variets.py
+	readmatrix.py
+	T_test_F_test.py
 
 ## Requirements
 
