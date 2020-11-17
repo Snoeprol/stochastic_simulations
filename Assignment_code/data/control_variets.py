@@ -1,3 +1,7 @@
+# Uses the control variet as described in the report
+# to calculate the variance reduction of random 
+# sampling using 1,000 simulation
+
 import matplotlib.pyplot as plt
 import random
 import numpy as np
