@@ -2,6 +2,8 @@
 
 This project explores different sampling methods, statistical confidence measures and multi-dimensional fitting to data using the Mandelbrot set.
 
+![](/data/data.png)
+
 ## Examples and features
 
 Example of interesting files to run:
