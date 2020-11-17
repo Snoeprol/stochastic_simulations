@@ -2,7 +2,7 @@
 
 This project explores different sampling methods, statistical confidence measures and multi-dimensional fitting to data using the Mandelbrot set.
 
-![](/data/data.png)
+![alt text](https://github.com/Snoeprol/stochastic_simulations/blob/master/Assignment_code/data/data.png?raw=true)
 
 ## Examples and features
 
