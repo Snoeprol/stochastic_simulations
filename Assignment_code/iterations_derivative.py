@@ -1,3 +1,5 @@
+# Code for producing Figure 2 in the report.
+
 import matplotlib.pyplot as plt
 import numpy as np 
 import matplotlib
@@ -10,7 +12,7 @@ matplotlib.rc('font', **font)
 
 samples =  100000
 
-with open("probs_different_its.txt") as f:
+with open("data/probs_different_its.txt") as f:
     lines = f.readlines()
     
     values = np.zeros((2, len(lines)))

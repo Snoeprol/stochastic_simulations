@@ -1,3 +1,7 @@
+# Code for producing Figure 3, 4 and 5 in the report
+# This consists of the surface plots, and a slice at a
+# particular computational time and compare variances
+
 import numpy as np
 from scipy.optimize import leastsq
 from scipy.optimize import curve_fit
@@ -13,6 +17,8 @@ import numpy as np
 from scipy.optimize import leastsq
 from scipy.optimize import curve_fit
 from readmatrix import read_matrix
+
+# Part 1: Making surface plot of computational time and fit
 
 # Values for which we performed iterations
 m = 100
@@ -37,6 +43,9 @@ coeff, r, rank, s = np.linalg.lstsq(A, B)
 
 # The polynomial fitted to the data
 def pol(X, a, b, c, d, e):
+    '''returns value of 2d polynomial
+    given by equation (3) in the report,
+    with coefficients a, b, c, d, e'''
     x_i, x_n = X
     return (
         a
@@ -92,7 +101,7 @@ for point in plot.allsegs[0][0]:
     # Get the points at which the computational time is equal in the fit
     points.append(point)
 
-# IF ALL VARIANCES AVAILABLE IMPORT UNDER THIS COMMENT
+# IF ALL VARIANCES AVAILABLE IMPORT UNDER THIS COMMENT as matrix all_variances[i][n] variance
 
 # Get the closest actual value, to associate variance with point (if variances are available)
 try:
@@ -121,6 +130,7 @@ for i, point in enumerate(points):
     plt.scatter(point[0], point[1], color = color)
 
 def make_cmap(min_hue, max_hue):
+    '''Creates a colormap'''
     colours = []
     for i in np.arange(min_hue, max_hue, 0.01):
         colours.append(colorsys.hls_to_rgb(i, 0.5, 1.))

@@ -1,3 +1,7 @@
+# Code that produces the F-test and T-test in the
+# report.
+
+
 import numpy as np
 from scipy.stats import ttest_ind
 from scipy.stats import fisher_exact
@@ -9,14 +13,14 @@ random_areas = []
 lhs_areas = []
 
 # Get values from files
-with open("random_areas.txt") as f:
+with open("data/random_areas.txt") as f:
     lines = f.readlines()
     for line in lines:
         line = line.rstrip("\n")
         area = float(line)
         random_areas.append(area)
 
-with open("areas_lhs.txt") as f:
+with open("data/areas_lhs.txt") as f:
     lines = f.readlines()
     for line in lines:
         line = line.rstrip("\n")
@@ -35,6 +39,7 @@ x = np.linspace(0, 15, 1001)[1:]
 mu = 0
 ls = '-'
 
+# Make distribution
 dist = fisher_f(len(lhs_areas), len(random_areas), mu)
 plt.plot(x, dist.pdf(x), ls=ls, c='black', label = 'Fischer distribution')
 print(sum(dist.pdf(x[0:750]) * 15/1001))

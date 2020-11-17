@@ -80,6 +80,6 @@ if __name__ == "__main__":
     print("Var X/ Var Z: " + str(np.var(areas)/ var_Z))
     print(areas)
 
-    with open('random_areas.txt', 'w') as f:
+    with open('data/random_areas.txt', 'w') as f:
         for item in areas:
             f.write("%s\n" % item)

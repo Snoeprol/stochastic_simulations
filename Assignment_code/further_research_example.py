@@ -1,3 +1,7 @@
+# Code for creating figure 11 in the report.
+# Makes a linear scatter plot with noise to illustrate concept
+# of optimal iterations 
+
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib
