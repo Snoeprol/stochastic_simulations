@@ -1,4 +1,6 @@
 # contains function that reads the computational time matrix from a text file
+# plots the computation cost as a function of iterations and number of points
+# if the file is ran as main file
 
 import numpy as np
 from scipy.optimize import leastsq
