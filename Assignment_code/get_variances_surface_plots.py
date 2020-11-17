@@ -1,3 +1,6 @@
+# Calculates the variances for Figure 5 in the report,
+# using 10 simulations per tuple (i,n)
+
 import numpy as np
 from tqdm import tqdm
 from control_variets import iterate_over_random_candidate
