@@ -1,16 +1,19 @@
+# Simulates the orthogonal and LHS method to calculate the area of the mandelbrot, and saves the values to a textfile
+
 import numpy as np
 import matplotlib.pyplot as plt
-from lhs import sim, LHS, run_lhs, Zn_1
+from lhs import LHS, run_lhs
+from functions import sim, Zn_1
 from ortho import ortho, run_ortho
 from tqdm import tqdm
 
 N = [4, 8, 11, 23, 32, 71, 101, 225, 317]
 lim = 100
 
-file1 = open("variance_ortho.txt", "a")
-file2 = open("variance_lhs.txt", "a")
-file1m = open("mean_ortho.txt", "a")
-file2m = open("mean_lhs.txt", "a")
+file1 = open("data/variance_ortho.txt", "a")
+file2 = open("data/variance_lhs.txt", "a")
+file1m = open("data/mean_ortho.txt", "a")
+file2m = open("data/mean_lhs.txt", "a")
 
 for _ in range(10):
     for points in tqdm(N):

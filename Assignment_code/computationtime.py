@@ -1,3 +1,6 @@
+# This code measures the time of sim() which is a random sampling method for a meshgrid of data to produce
+# a matrix of computational time values.
+
 from lhs import sim, Zn_1
 import matplotlib.pyplot as plt
 import numpy as np
@@ -30,8 +33,8 @@ def function(i, N):
     return 0
 
 
+# 100 x 100 matrix. Higher values yield a finer grid
 m = 100
-
 rows, cols = (m, m)
 
 i = np.array([2 * x for x in range(1, m + 1)])
@@ -42,6 +45,6 @@ for x, i_ in enumerate(tqdm(i)):
     for y, n_ in enumerate(n):
         C[x][y] = function(i_, n_)
 
-file = open("matrix.txt", "w")
+file = open("data/matrix.txt", "a")
 file.write(str(C))
 file.close()

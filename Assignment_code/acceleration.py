@@ -1,3 +1,5 @@
+# This code reproduces figure 9, which is the acceleration factor between the compared sample methods
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -5,22 +7,25 @@ from scipy.optimize import curve_fit
 
 plt.rcParams.update({"font.size": 10})
 
+# Chosen N values, where the number of samples is N**2
 N = [11, 23, 32, 71, 101, 225, 317]
 
-df_rand_var = pd.read_csv("variance_rand.txt", names=["N", "Var"])
-df_rand_mean = pd.read_csv("mean_rand.txt", names=["N", "Mean"])
+# Variances and mean areas of all methods
+df_rand_var = pd.read_csv("data/variance_rand.txt", names=["N", "Var"])
+df_rand_mean = pd.read_csv("data/mean_rand.txt", names=["N", "Mean"])
 
-df_lhs_var = pd.read_csv("variance_lhs.txt", names=["N", "Var"])
-df_lhs_mean = pd.read_csv("mean_lhs.txt", names=["N", "Mean"])
+df_lhs_var = pd.read_csv("data/variance_lhs.txt", names=["N", "Var"])
+df_lhs_mean = pd.read_csv("data/mean_lhs.txt", names=["N", "Mean"])
 
-df_ortho_var = pd.read_csv("variance_ortho.txt", names=["N", "Var"])
-df_ortho_mean = pd.read_csv("mean_ortho.txt", names=["N", "Mean"])
+df_ortho_var = pd.read_csv("data/variance_ortho.txt", names=["N", "Var"])
+df_ortho_mean = pd.read_csv("data/mean_ortho.txt", names=["N", "Mean"])
 
-df_control_var = pd.read_csv("variance_control2.txt", names=["N", "Var"])
-df_control_mean = pd.read_csv("mean_control2.txt", names=["N", "Mean"])
+df_control_var = pd.read_csv("data/variance_control.txt", names=["N", "Var"])
+df_control_mean = pd.read_csv("data/mean_control.txt", names=["N", "Mean"])
 
 x_data = np.array(N) ** 2
 
+# Create a combo function to fit all methods at once for shared parameters
 comboX = np.append(x_data, x_data)
 comboX = np.append(comboX, x_data)
 comboX = np.append(comboX, x_data)
@@ -74,7 +79,7 @@ comboSig = np.append(sigma_ortho, sigma_lhs)
 comboSig = np.append(comboSig, sigma_rand)
 comboSig = np.append(comboSig, sigma_cont)
 
-
+# These functions will be combined in the function comboFunc()
 def func1(x, q1, q2, q3, q4, c, d):
     return q1 / x ** d + c
 
@@ -95,8 +100,8 @@ def comboFunc(comboData, q1, q2, q3, q4, c, d):
     # single data set passed in, extract separate data
     extract1 = comboData[: len(y1)]  # first data
     extract2 = comboData[len(y2) : len(y1) + len(y2)]  # second data
-    extract3 = comboData[len(y1) + len(y2) : len(y1) + len(y2) + len(y3)]
-    extract4 = comboData[len(y1) + len(y2) + len(y3) :]
+    extract3 = comboData[len(y1) + len(y2) : len(y1) + len(y2) + len(y3)]  # third data
+    extract4 = comboData[len(y1) + len(y2) + len(y3) :]  # fourth data
 
     result1 = func1(extract1, q1, q2, q3, q4, c, d)
     result2 = func2(extract2, q1, q2, q3, q4, c, d)
@@ -132,6 +137,7 @@ plt.errorbar(
     x_data, mean_var_cont, yerr=6 * np.array(sigma_cont), fmt="mo", label="Control"
 )
 
+# Fitted parameters
 q1, q2, q3, q4, c, d = fittedParameters
 
 a_lo = q2 ** (1 / d) / q1 ** (1 / d)

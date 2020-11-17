@@ -1,3 +1,5 @@
+# Creates the distributions of figures 6,7,8, and prints the chi^2 values
+
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import norm
@@ -12,7 +14,7 @@ plt.rcParams["figure.dpi"] = 140
 
 # List that will be filled with areas
 counts = []
-with open("areas_ortho.txt") as f:
+with open("data/areas_ortho.txt") as f:
     for line in f:
 
         count = float(line.rstrip("\n"))
