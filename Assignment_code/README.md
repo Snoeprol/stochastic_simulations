@@ -17,7 +17,7 @@ This project requires matplotlib, numpy, scipy and tqdm
 
 ## Installation and Getting Started
 
-First clone the project, then run separate files liek,
+First clone the project, then run separate files e.g.,
 
 	git clone https://github.com/Snoeprol/stochastic_simulations
   	cd stochastic_simulations
