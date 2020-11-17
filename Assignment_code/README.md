@@ -20,9 +20,9 @@ This project requires matplotlib, numpy, scipy and tqdm
 First clone the project, then run separate files liek,
 
 	git clone https://github.com/Snoeprol/stochastic_simulations
-  cd stochastic_simulations
-  cd Assignment_code
-  python control_variets.py
+  	cd stochastic_simulations
+  	cd Assignment_code
+  	python control_variets.py
 
 
 ## Contributors
