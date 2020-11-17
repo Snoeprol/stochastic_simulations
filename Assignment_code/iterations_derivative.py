@@ -38,7 +38,7 @@ axl.set_ylabel('Mandelbrot area')
 
 # Create right side line plot, color accordingly
 color = "red"
-axr.semilogy(values[0][7:], deriv[6:],'-.', color=color)
+axr.plot(values[0][7:], deriv[6:],'-.', color=color)
 axr.tick_params(axis="y", color=color, labelcolor=color)
 axr.set_ylabel(r'$\frac{dA_{i,n}}{di}$')
 plt.grid()
